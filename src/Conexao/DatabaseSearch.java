@@ -2,43 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Validadores;
+package Conexao;
 
-import Conexao.DatabaseConnection;
-import Model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.InputMismatchException;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author 182120044
+ * @author RF Informática
  */
-public class util {
-
-   public class Login {
-    public Login(String username, String password) {
+public class DatabaseSearch {
+    public List<String> searchByKeyword(String keyword) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+        List<String> results = new ArrayList<>();
         
         try {
             connection = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM tabela WHERE coluna LIKE ?";
             statement = connection.prepareStatement(query);
-            statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(1, "%" + keyword + "%");
             
             resultSet = statement.executeQuery();
             
-            if (resultSet.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setUsername(resultSet.getString("username"));
-                usuario.setPassword(resultSet.getString("password"));
-                return usuario;
+            while (resultSet.next()) {
+                String result = resultSet.getString("coluna");
+                results.add(result);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,7 +52,7 @@ public class util {
             }
         }
         
-        return null;
+        return results;
     }
-   }
+    
 }

@@ -10,57 +10,31 @@ package Model;
  */
 public class Usuario {
 
-    private int iduser;
-    private String nome;
-    private String contato;
-    private String senha;
-
-    public Usuario() {
-
+    private String username;
+    private String password;
+    private String nivelAcesso;
+    
+    public String getUsername() {
+        return username;
     }
-
-    public Usuario(int iduser, String nome, String contato, String senha) {
-        this.iduser = iduser;
-        this.nome = nome;
-        this.contato = contato;
-        this.senha = senha;
+    
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-    public int getIduser() {
-        return iduser;
+    
+    public String getPassword() {
+        return password;
     }
-
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-    public String getNome() {
-        return nome;
+    
+    public String getNivelAcesso() {
+        return nivelAcesso;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    
+    public void setNivelAcesso(String nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
-
-    public String getContato() {
-        return contato;
-    }
-
-    public void setContato(String contato) {
-        this.contato = contato;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    @Override
-    public String toString() {
-        return "usuarios{" + "iduser=" + iduser + ", nome=" + nome + ", contato=" + contato + ", senha=" + senha + '}';
-    }
-
 }
