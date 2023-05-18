@@ -17,27 +17,26 @@ import java.util.regex.Pattern;
  *
  * @author 182120044
  */
-public class util {
+public class Login {
 
-   public class Login {
-    public Login(String username, String password) {
+    public static Usuario autenticar(String username, String password) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        
+
         try {
             connection = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, username);
             statement.setString(2, password);
-            
+
             resultSet = statement.executeQuery();
-            
+
             if (resultSet.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setUsername(resultSet.getString("username"));
-                usuario.setPassword(resultSet.getString("password"));
+                usuario.setUsername(resultSet.getString("nome"));
+                usuario.setPassword(resultSet.getString("senha"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -57,8 +56,7 @@ public class util {
                 e.printStackTrace();
             }
         }
-        
+
         return null;
     }
-   }
 }

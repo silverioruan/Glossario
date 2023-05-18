@@ -9,11 +9,9 @@ import Controller.CCategoria;
 import Controller.CUsuario;
 import Model.Categoria;
 import Model.Usuario;
-import Validadores.util.Login;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
@@ -36,8 +34,7 @@ public class GlossarioInfo {
         System.out.print("Digite a senha: ");
         String password = leia.nextLine();
 
-        
-        Usuario usuarioAutenticado = Usuario autenticar(username, password);
+        Usuario usuarioAutenticado = Validadores.Login.autenticar(username, password);
 
         if (usuarioAutenticado != null) {
             if (usuarioAutenticado.getNivelAcesso().equals("administrador")) {
@@ -55,21 +52,37 @@ public class GlossarioInfo {
      */
     public static void main(String[] args) {
         int opm = 99;
+        System.out.println("Sistema de Glossario de TI");
         do {
             System.out.println(AZUL + "--Glossário de T.I");
-            menu();
+            menuuser();
             opm = leiaNumInt();
             switch (opm) {
                 case 1:
                     System.out.println(AZUL + "--Pesquisar Termo--" + RESET);
-                    System.out.print("Digite o termo:");
-                    String termo = leia.nextLine();
-                    pesquisaTermo(termo);
+                    pesquisaTermo();
                     break;
 
                 case 2:
-                    System.out.println(AZUL + "--Editar Termo--");
-                    editarTermo();
+                    Login();
+                    do {
+                        menuadmin();
+                        opm = leia.nextInt();
+                        switch (opm) {
+                            case 1:
+                                editarTermo();
+                                break;
+                            case 2:
+                                deletarTermo();
+                                break;
+
+                            case 0:
+                                break;
+                            default:
+                                System.out.print(VERMELHO + "Opção inválida" + RESET);
+
+                        }
+                    } while (opm != 0);
 
                     break;
                 default:
@@ -93,22 +106,28 @@ public class GlossarioInfo {
 
     }
 
-    public static void menu() {
+    public static void menuadmin() {
         System.out.println(AZUL + " --Glossário de T.I--" + RESET);
-        System.out.println("1- Pesquisar termo");
-        System.out.println("2- Editar termo");
+        System.out.println("1- Editar termo");
+        System.out.println("2- Deletar termo");
         System.out.println("0 - Sair");
     }
 
-    private static void pesquisaTermo(String termo) {
-       
-        
+    public static void menuuser() {
+        System.out.println(AZUL + " --Glossário de T.I--" + RESET);
+        System.out.println("1- Pesquisar termo");
+        System.out.println("2 - Login");
+        System.out.println("0 - Sair");
+    }
+
+    private static void pesquisaTermo() {
+
         System.out.print("Digite a palavra-chave para busca: ");
         String keyword = leia.nextLine();
-        
+
         DatabaseSearch databaseSearch = new DatabaseSearch();
         List<String> results = databaseSearch.searchByKeyword(keyword);
-        
+
         if (results.isEmpty()) {
             System.out.println("Nenhum resultado encontrado.");
         } else {
@@ -117,10 +136,9 @@ public class GlossarioInfo {
                 System.out.println(result);
             }
         }
-        
+
         leia.close();
     }
-    
 
     private static void editarTermo() {
         System.out.println("Digite o termo a ser editado");
@@ -129,8 +147,12 @@ public class GlossarioInfo {
 
         }
     }
-    private static void deletarTermo(){
-        
+
+    private static void deletarTermo() {
+
+        System.out.println("Digite o termo a ser deletado:");
+        String termo = leia.nextLine();
+
     }
 
 }
