@@ -4,6 +4,7 @@
  */
 package Conexao;
 
+import Model.Categoria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,24 +17,26 @@ import java.util.List;
  * @author RF Informática
  */
 public class DatabaseSearch {
+
     public List<String> searchByKeyword(String keyword) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<String> results = new ArrayList<>();
-        
+
         try {
             connection = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM tabela WHERE coluna LIKE ?";
+            String query = "SELECT * FROM terminologias WHERE nome LIKE ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, "%" + keyword + "%");
-            
+
             resultSet = statement.executeQuery();
-            
+
             while (resultSet.next()) {
-                String result = resultSet.getString("coluna");
+                String result = resultSet.getString("descricao");
                 results.add(result);
             }
+            return results;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -51,8 +54,8 @@ public class DatabaseSearch {
                 e.printStackTrace();
             }
         }
-        
-        return results;
+        return null;
+
     }
-    
+
 }

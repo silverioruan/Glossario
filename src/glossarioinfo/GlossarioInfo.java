@@ -55,7 +55,9 @@ public class GlossarioInfo {
         System.out.println("Sistema de Glossario de TI");
         do {
             System.out.println(AZUL + "--Glossário de T.I");
+            
             menuuser();
+            System.out.print("--Digite Aqui--");
             opm = leiaNumInt();
             switch (opm) {
                 case 1:
@@ -70,10 +72,10 @@ public class GlossarioInfo {
                         opm = leia.nextInt();
                         switch (opm) {
                             case 1:
-                                editarTermo();
+                                //editarTermo();
                                 break;
                             case 2:
-                                deletarTermo();
+                                //deletarTermo();
                                 break;
 
                             case 0:
@@ -137,9 +139,9 @@ public class GlossarioInfo {
             }
         }
 
-        leia.close();
+        
     }
-
+/*
     private static void editarTermo() {
         System.out.println("Digite o termo a ser editado");
         String termo = leia.nextLine();
@@ -154,5 +156,5 @@ public class GlossarioInfo {
         String termo = leia.nextLine();
 
     }
-
+*/
 }
