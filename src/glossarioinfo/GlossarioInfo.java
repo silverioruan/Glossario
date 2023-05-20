@@ -4,7 +4,7 @@
  */
 package glossarioinfo;
 
-import Conexao.DatabaseSearch;
+import glossarioDAO.DatabaseSearch;
 import Controller.CCategoria;
 import Controller.CUsuario;
 import Model.Categoria;
@@ -12,6 +12,7 @@ import Model.Usuario;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
 
 /**
  *
@@ -27,20 +28,20 @@ public class GlossarioInfo {
     public static CCategoria cadCategoria = new CCategoria();
     public static CUsuario cadUsuario = new CUsuario();
 
-    public static void Login() {
+    public static void Loginmain() {
         System.out.print("Digite o nome de usuário: ");
-        String username = leia.nextLine();
+        String nome = leia.nextLine();
 
         System.out.print("Digite a senha: ");
-        String password = leia.nextLine();
+        String senha = leia.nextLine();
 
-        Usuario usuarioAutenticado = Validadores.Login.autenticar(username, password);
+        Usuario usuarioAutenticado = Validadores.Login.autenticar(nome, senha);
 
         if (usuarioAutenticado != null) {
-            if (usuarioAutenticado.getNivelAcesso().equals("administrador")) {
+            if (usuarioAutenticado.getNivelAcesso()==1) {
                 System.out.println("Login de administrador bem-sucedido!");
                 // Lógica para o nível de acesso do administrador
-            } else if (usuarioAutenticado.getNivelAcesso().equals("usuario")) {
+            } else {
                 System.out.println("Login de usuário comum bem");
             }
 
@@ -66,7 +67,7 @@ public class GlossarioInfo {
                     break;
 
                 case 2:
-                    Login();
+                    Loginmain();
                     do {
                         menuadmin();
                         opm = leia.nextInt();

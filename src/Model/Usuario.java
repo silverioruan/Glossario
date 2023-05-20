@@ -10,31 +10,38 @@ package Model;
  */
 public class Usuario {
 
-    private String username;
-    private String password;
-    private String nivelAcesso;
+    private String nome;
+    private String senha;
+    private int nivelAcesso;
     
     public String getUsername() {
-        return username;
+        return nome;
     }
     
     public void setUsername(String username) {
-        this.username = username;
+        this.nome = username;
     }
     
     public String getPassword() {
-        return password;
+        return senha;
     }
     
     public void setPassword(String password) {
-        this.password = password;
+        this.senha = password;
     }
     
-    public String getNivelAcesso() {
+    public int getNivelAcesso() {
         return nivelAcesso;
     }
     
-    public void setNivelAcesso(String nivelAcesso) {
+    public void setNivelAcesso(int nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nome=" + nome + ", senha=" + senha + ", nivelAcesso=" + nivelAcesso + '}';
+    }
+    
+    
 }
