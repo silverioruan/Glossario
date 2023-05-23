@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/Conexao/DatabaseSearch.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/usuario.java</file>
+            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/JFadmin.java</file>
             <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/glossarioinfo/GlossarioInfo.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/admMenu.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/menuPrincipal.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/admin.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/Model/Categoria.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/glossarioDAO/GlossarioDAO.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/Conexao/DatabaseConnection.java</file>
-            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/Model/Usuario.java</file>
+            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/JFadmMenu.java</file>
+            <file>file:/C:/Users/182120050/Documents/NetBeansProjects/Glossario/src/view/JFusuario.java</file>
         </group>
     </open-files>
 </project-private>
