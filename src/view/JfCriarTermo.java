@@ -78,7 +78,6 @@ public class JfCriarTermo extends javax.swing.JFrame {
             }
         });
 
-        JtSinonimo.setEditable(false);
         JtSinonimo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         nome.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -100,7 +99,6 @@ public class JfCriarTermo extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 255, 51));
         jLabel5.setText("Sinonimo:");
 
-        descricao.setEditable(false);
         descricao.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
         Criar.setBackground(new java.awt.Color(102, 255, 102));
@@ -235,10 +233,18 @@ public class JfCriarTermo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void CriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarActionPerformed
-String novoNome = nome.getText();
+// Informações da tabela e das colunas
+        String tableName = "terminologias";
+        String nomeColumn = "nome";
+        String descricaoColumn = "descricao";
+        String sinonimoColumn = "sinonimo";
+        
+        // Novos valores para as colunas
+        String novoNome = nome.getText();
         String novaDescricao = descricao.getText();
         String novoSinonimo = JtSinonimo.getText();
-
+        
+      
         try {
 
             // Conectar ao banco de dados
@@ -252,7 +258,7 @@ String novoNome = nome.getText();
                 id = rs.getInt("idterminologias");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "UPDATE terminologias SET nome  = ?,  descricao = ?, sinonimo =?" + " where idterminologias = " + id;
+            String sql = "INSERT INTO terminologias(,nome,descricao,sinonimo,) VALUES("+novoNome","+novaDescricao","+novoSinonimo")";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
 
