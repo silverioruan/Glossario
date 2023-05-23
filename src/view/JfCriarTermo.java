@@ -4,6 +4,13 @@
  */
 package view;
 
+import Conexao.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 182120050
@@ -29,6 +36,15 @@ public class JfCriarTermo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        JtSinonimo = new javax.swing.JTextField();
+        nome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        descricao = new javax.swing.JTextField();
+        Criar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,26 +65,121 @@ public class JfCriarTermo extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel3.setText("Nome:");
+
+        jButton5.setBackground(new java.awt.Color(51, 204, 255));
+        jButton5.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        jButton5.setText("LIMPAR.exe");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        JtSinonimo.setEditable(false);
+        JtSinonimo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        nome.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        nome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeFocusLost(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel2.setText("Criar Termo:");
+
+        jLabel4.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel4.setText("Descrição");
+
+        jLabel5.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel5.setText("Sinonimo:");
+
+        descricao.setEditable(false);
+        descricao.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+
+        Criar.setBackground(new java.awt.Color(102, 255, 102));
+        Criar.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        Criar.setText("CRIAR.exe");
+        Criar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CriarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(JtSinonimo, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(18, 18, Short.MAX_VALUE)
+                                    .addComponent(jButton5))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(324, 324, 324)
+                            .addComponent(jLabel4))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(436, 436, 436)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtSinonimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -91,6 +202,78 @@ public class JfCriarTermo extends javax.swing.JFrame {
         mp.setVisible(true);
         this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void nomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFocusLost
+        // TODO add your handling code here:
+        String novoNome = nome.getText();
+
+        try {
+
+            Connection con = DatabaseConnection.getConnection();
+            int id = 0;
+            String sql1 = "SELECT * from terminologias where nome like ?";
+            PreparedStatement pst = con.prepareStatement(sql1);
+            pst.setString(1, novoNome);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                nome.setText(rs.getString("nome"));
+                JtSinonimo.setText(rs.getString("sinonimo"));
+                descricao.setText(rs.getString("descricao"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_nomeFocusLost
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        nome.setText("");
+        descricao.setText("");
+        JtSinonimo.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void CriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarActionPerformed
+String novoNome = nome.getText();
+        String novaDescricao = descricao.getText();
+        String novoSinonimo = JtSinonimo.getText();
+
+        try {
+
+            // Conectar ao banco de dados
+            Connection con = DatabaseConnection.getConnection();
+            int id = 0;
+            String sql1 = "SELECT * from terminologias where nome like ?";
+            PreparedStatement pst = con.prepareStatement(sql1);
+            pst.setString(1, novoNome);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("idterminologias");
+            }
+            // Construir a consulta SQL para atualizar as colunas
+            String sql = "UPDATE terminologias SET nome  = ?,  descricao = ?, sinonimo =?" + " where idterminologias = " + id;
+            // Criar a declaração preparada (PreparedStatement)
+            PreparedStatement statement = con.prepareStatement(sql);
+
+            // Definir os valores para as colunas
+            statement.setString(1, novoNome);
+            statement.setString(2, novaDescricao);
+            statement.setString(3, novoSinonimo);
+            System.out.println(sql);
+            // Executar a atualização
+            int rowsAffected = statement.executeUpdate();
+
+            // Verificar se a atualização foi bem-sucedida
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "As colunas foram atualizadas com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Nenhuma linha foi atualizada.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_CriarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,8 +311,17 @@ public class JfCriarTermo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Criar;
+    private javax.swing.JTextField JtSinonimo;
+    private javax.swing.JTextField descricao;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nome;
     // End of variables declaration//GEN-END:variables
 }
