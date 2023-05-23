@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.DEFAULT_OPTION;
 
 /**
  *
@@ -253,28 +254,33 @@ public class JfDeletarTermo extends javax.swing.JFrame {
             while (rs.next()) {
                 id = rs.getInt("idterminologias");
             }
-            // Construir a consulta SQL para atualizar as colunas
-            String sql = "UPDATE terminologias SET nome  = NULL,  descricao = NULL, sinonimo =NULL" + " where idterminologias = " + id;
-            // Criar a declaração preparada (PreparedStatement)
-            PreparedStatement statement = con.prepareStatement(sql);
 
-            
-            // Executar a atualização
-            int rowsAffected = statement.executeUpdate();
+            Object[] btnMSG = {"Sim", "Não"};
+            int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar?",".: Deletar :.",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
+        if (resp == 0) {
+                // Construir a consulta SQL para atualizar as colunas
+                String sql = "UPDATE terminologias SET nome  = NULL,  descricao = NULL, sinonimo =NULL" + " where idterminologias = " + id;
+                // Criar a declaração preparada (PreparedStatement)
+                PreparedStatement statement = con.prepareStatement(sql);
 
-            // Verificar se a atualização foi bem-sucedida
-            if (rowsAffected > 0) {
+                // Executar a atualização
+                int rowsAffected = statement.executeUpdate();
                 JOptionPane.showMessageDialog(this, "As colunas foram atualizadas com sucesso!");
+                nome.setText("");
+                descricao.setText("");
+                JtSinonimo.setText("");
             } else {
-                JOptionPane.showMessageDialog(this, "Nenhuma linha foi atualizada.");
+                JOptionPane.showMessageDialog(this, "Ok, delete cancelado pelo usuário!");
+
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         nome.setText("");
+        nome.setText("");
         descricao.setText("");
         JtSinonimo.setText("");
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
