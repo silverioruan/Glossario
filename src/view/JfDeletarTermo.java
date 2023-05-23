@@ -258,12 +258,7 @@ public class JfDeletarTermo extends javax.swing.JFrame {
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
 
-            // Definir os valores para as colunas
-            /*statement.setString(1, novoNome);
-            statement.setString(2, novaDescricao);
-            statement.setString(3, novoSinonimo);
-            System.out.println(sql);
-             */
+            
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
 
@@ -276,6 +271,10 @@ public class JfDeletarTermo extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         nome.setText("");
+        descricao.setText("");
+        JtSinonimo.setText("");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
