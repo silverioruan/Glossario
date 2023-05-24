@@ -219,10 +219,15 @@ public class JfDeletarTermo extends javax.swing.JFrame {
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
 
-            while (rs.next()) {
-                nome.setText(rs.getString("nome"));
-                JtSinonimo.setText(rs.getString("sinonimo"));
-                descricao.setText(rs.getString("descricao"));
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(this, "Termo não encontrado");
+                nome.requestFocus(); //precisa arrumar isso aqui
+            } else {
+               do  {
+                    nome.setText(rs.getString("nome"));
+                    JtSinonimo.setText(rs.getString("sinonimo"));
+                    descricao.setText(rs.getString("descricao"));
+                }while (rs.next());
             }
 
         } catch (SQLException e) {
