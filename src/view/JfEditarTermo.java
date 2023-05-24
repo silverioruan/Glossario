@@ -215,7 +215,7 @@ public class JfEditarTermo extends javax.swing.JFrame {
         String nomeColumn = "nome";
         String descricaoColumn = "descricao";
         String sinonimoColumn = "sinonimo";
-        */
+         */
         // Novos valores para as colunas
         String novoNome = nome.getText();
         String novaDescricao = descricao.getText();
@@ -270,18 +270,15 @@ public class JfEditarTermo extends javax.swing.JFrame {
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
 
-            
-            
-            if (rs == null) {
-                    JOptionPane.showMessageDialog(this, "Termo não encontrado");
-                    nome.requestFocus(); //precisa arrumar isso aqui
-            }
-            else{
-                while (rs.next()) {
-                nome.setText(rs.getString("nome"));
-                JtSinonimo.setText(rs.getString("sinonimo"));
-                descricao.setText(rs.getString("descricao"));
-            }
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(this, "Termo não encontrado");
+                nome.requestFocus(); //precisa arrumar isso aqui
+            } else {
+               do  {
+                    nome.setText(rs.getString("nome"));
+                    JtSinonimo.setText(rs.getString("sinonimo"));
+                    descricao.setText(rs.getString("descricao"));
+                }while (rs.next());
             }
 
         } catch (SQLException e) {

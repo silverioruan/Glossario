@@ -258,7 +258,7 @@ public class JfCriarTermo extends javax.swing.JFrame {
                 id = rs.getInt("idterminologias");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO terminologias(,nome,descricao,sinonimo,) VALUES("+novoNome","+novaDescricao","+novoSinonimo")";
+            String sql = "INSERT INTO terminologias(nome,descricao,sinonimo,) VALUES("+novoNome","+novaDescricao","+novoSinonimo")";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
 
