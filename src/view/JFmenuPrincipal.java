@@ -109,7 +109,7 @@ public class JFmenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbadminActionPerformed
 
     private void jbpesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbpesquisaActionPerformed
-        JFusuario mp = new JFusuario();
+        JFPesquisa mp = new JFPesquisa();
         mp.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jbpesquisaActionPerformed

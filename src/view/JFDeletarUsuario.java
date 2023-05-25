@@ -1,23 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package view;
 
-import glossarioDAO.DatabaseSearch;
-import java.util.List;
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author 182120050
+ * @author loren
  */
-public class JFusuario extends javax.swing.JFrame {
+public class JFDeletarUsuario extends javax.swing.JFrame {
 
     /**
-     * Creates new form usuario
+     * Creates new form JFDeletarUsuario
      */
-    public JFusuario() {
+    public JFDeletarUsuario() {
         initComponents();
     }
 
@@ -39,9 +36,9 @@ public class JFusuario extends javax.swing.JFrame {
         descricao = new javax.swing.JTextPane();
         jbPesquisar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -54,7 +51,7 @@ public class JFusuario extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(51, 255, 51));
         jLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel2.setText("Pesquisar Termo:");
+        jLabel2.setText("Deletar Usuário");
 
         jtnome.setFont(new java.awt.Font("OCR A Extended", 3, 18)); // NOI18N
         jtnome.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -95,14 +92,19 @@ public class JFusuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 204, 255));
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        jButton1.setText("LIMPAR.exe");
+        jButton1.setText("DELETAR.exe");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel3.setBackground(new java.awt.Color(51, 255, 51));
+        jLabel3.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel3.setText("Nome:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,14 +124,16 @@ public class JFusuario extends javax.swing.JFrame {
                         .addGap(303, 303, 303)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbPesquisar)))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +142,12 @@ public class JFusuario extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(95, 95, 95)
                 .addComponent(jLabel2)
-                .addGap(42, 42, 42)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,11 +174,23 @@ public class JFusuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtnomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtnomeKeyTyped
+        // TODO add your handling code here:
+
+        //        if(evt.getKeyCode()==10){
+            //            jbPesquisar.doClick();
+            //        }
+    }//GEN-LAST:event_jtnomeKeyTyped
+
+    private void jbvoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbvoltarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbvoltarMouseClicked
 
     private void jbvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvoltarActionPerformed
         // TODO add your handling code here:
@@ -180,10 +198,6 @@ public class JFusuario extends javax.swing.JFrame {
         mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbvoltarActionPerformed
-
-    private void jbvoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbvoltarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbvoltarMouseClicked
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         // TODO add your handling code here:
@@ -201,21 +215,11 @@ public class JFusuario extends javax.swing.JFrame {
                 descricao.setText(descricao.getText() + "\n---\n" + result);
             }
         }
-
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     private void jbPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbPesquisarKeyPressed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jbPesquisarKeyPressed
-
-    private void jtnomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtnomeKeyTyped
-        // TODO add your handling code here:
-
-//        if(evt.getKeyCode()==10){
-//            jbPesquisar.doClick();
-//        }
-    }//GEN-LAST:event_jtnomeKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jtnome.setText("");
@@ -241,21 +245,20 @@ public class JFusuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFusuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFDeletarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFusuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFDeletarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFusuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFDeletarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFusuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFDeletarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFusuario().setVisible(true);
+                new JFDeletarUsuario().setVisible(true);
             }
         });
     }
@@ -265,6 +268,7 @@ public class JFusuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbPesquisar;

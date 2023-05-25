@@ -190,7 +190,7 @@ public class JFadmin extends javax.swing.JFrame {
 
         try {
             connection = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
+            String query = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, jTusuario.getText());
             statement.setString(2, jfsenha.getText());
@@ -199,7 +199,7 @@ public class JFadmin extends javax.swing.JFrame {
 
             if (resultSet.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setUsername(resultSet.getString("nome"));
+                usuario.setUsername(resultSet.getString("usuario"));
                 usuario.setPassword(resultSet.getString("senha"));
                 usuario.setNivelAcesso(resultSet.getInt("idPerfisAcesso"));
                 JFadmMenu mp = new JFadmMenu();

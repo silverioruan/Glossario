@@ -29,9 +29,10 @@ public class JFadmMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        CriarTermo = new javax.swing.JButton();
+        EditarTermo = new javax.swing.JButton();
+        DeletarTermo = new javax.swing.JButton();
+        ADMUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,30 +53,39 @@ public class JFadmMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 255, 102));
-        jButton4.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jButton4.setText("Criar Termo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        CriarTermo.setBackground(new java.awt.Color(102, 255, 102));
+        CriarTermo.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        CriarTermo.setText("Criar Termo");
+        CriarTermo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                CriarTermoActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(102, 255, 102));
-        jButton5.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jButton5.setText("Editar Termo");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        EditarTermo.setBackground(new java.awt.Color(102, 255, 102));
+        EditarTermo.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        EditarTermo.setText("Editar Termo");
+        EditarTermo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                EditarTermoActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(102, 255, 102));
-        jButton6.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jButton6.setText("Deletar Termo");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        DeletarTermo.setBackground(new java.awt.Color(102, 255, 102));
+        DeletarTermo.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        DeletarTermo.setText("Deletar Termo");
+        DeletarTermo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                DeletarTermoActionPerformed(evt);
+            }
+        });
+
+        ADMUsuario.setBackground(new java.awt.Color(204, 51, 255));
+        ADMUsuario.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        ADMUsuario.setText("MENU USUÁRIO.exe");
+        ADMUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ADMUsuarioActionPerformed(evt);
             }
         });
 
@@ -84,20 +94,23 @@ public class JFadmMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(147, 147, 147)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                        .addComponent(jButton6))
-                    .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ADMUsuario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(78, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(CriarTermo)
+                                .addGap(147, 147, 147)
+                                .addComponent(EditarTermo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                                .addComponent(DeletarTermo))
+                            .addComponent(jLabel1))))
                 .addGap(55, 55, 55))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,12 +119,14 @@ public class JFadmMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(113, 113, 113)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(261, 261, 261)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(CriarTermo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditarTermo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeletarTermo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(243, 243, 243)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ADMUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,23 +149,29 @@ public class JFadmMenu extends javax.swing.JFrame {
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void CriarTermoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarTermoActionPerformed
 JfCriarTermo mp = new JfCriarTermo();
         mp.setVisible(true);
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_CriarTermoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void EditarTermoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarTermoActionPerformed
 JfEditarTermo mp = new JfEditarTermo();
         mp.setVisible(true);
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_EditarTermoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void DeletarTermoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarTermoActionPerformed
 JfDeletarTermo mp = new JfDeletarTermo();
         mp.setVisible(true);
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_DeletarTermoActionPerformed
+
+    private void ADMUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADMUsuarioActionPerformed
+JFCriarUsuario mp = new JFCriarUsuario();
+        mp.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_ADMUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,10 +210,11 @@ JfDeletarTermo mp = new JfDeletarTermo();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ADMUsuario;
+    private javax.swing.JButton CriarTermo;
+    private javax.swing.JButton DeletarTermo;
+    private javax.swing.JButton EditarTermo;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
