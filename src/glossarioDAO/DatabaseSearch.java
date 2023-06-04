@@ -58,5 +58,43 @@ public class DatabaseSearch {
         return null;
 
     }
+ public List<String> searchByKeyword2(String keyword) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<String> results = new ArrayList<>();
 
+        try {
+            connection = DatabaseConnection.getConnection();
+            String query = "SELECT * FROM usuarios WHERE nome LIKE ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, "%" + keyword + "%");
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String result = resultSet.getString("nome");
+                results.add(result);
+            }
+            return results;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+
+    }
 }

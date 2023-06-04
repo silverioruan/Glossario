@@ -5,6 +5,15 @@
  */
 package view;
 
+import Conexao.DatabaseConnection;
+import glossarioDAO.DatabaseSearch;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author loren
@@ -204,7 +213,7 @@ public class JFDeletarUsuario extends javax.swing.JFrame {
         String keyword = jtnome.getText();
 
         DatabaseSearch databaseSearch = new DatabaseSearch();
-        List<String> results = databaseSearch.searchByKeyword(keyword);
+        List<String> results = databaseSearch.searchByKeyword2(keyword);
 
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Nenhum resultado encontrado.");
@@ -222,8 +231,46 @@ public class JFDeletarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbPesquisarKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jtnome.setText("");
-        descricao.setText("");
+        String novoUsuario = jtnome.getText();
+
+        try {
+
+            // Conectar ao banco de dados
+            Connection con = DatabaseConnection.getConnection();
+            int id = 0;
+            String sql1 = "SELECT * from usuarios where nome like ?";
+            PreparedStatement pst = con.prepareStatement(sql1);
+            pst.setString(1, novoUsuario);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("idusuarios");
+            }
+
+            Object[] btnMSG = {"Sim", "Não"};
+            int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar?",".: Deletar :.",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
+        if (resp == 0) {
+                String sql = "DELETE FROM usuarios WHERE nome = ? ";
+
+                // Criar a declaração preparada (PreparedStatement)
+                PreparedStatement statement = con.prepareStatement(sql);
+                statement.setString(1, novoUsuario);
+
+                // Executar a atualização
+                int rowsAffected = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "As colunas foram atualizadas com sucesso!");
+               
+
+
+
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Ok, delete cancelado pelo usuário!");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

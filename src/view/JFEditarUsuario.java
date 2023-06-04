@@ -5,6 +5,13 @@
  */
 package view;
 
+import Conexao.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author loren
@@ -269,13 +276,13 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
             Connection con = DatabaseConnection.getConnection();
             int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
+            String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                nome.setText(rs.getString("nome"));
+                jtnome.setText(rs.getString("nome"));
                 JtSinonimo.setText(rs.getString("sinonimo"));
                 descricao.setText(rs.getString("descricao"));
             }
@@ -287,13 +294,13 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
     private void Criar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar12ActionPerformed
         // Informações da tabela e das colunas
-        String tableName = "terminologias";
+        String tableName = "usuarios";
         String nomeColumn = "nome";
         String descricaoColumn = "descricao";
         String sinonimoColumn = "sinonimo";
 
         // Novos valores para as colunas
-        String novoNome = nome.getText();
+        String novoNome = jtnome.getText();
         String novaDescricao = descricao.getText();
         String novoSinonimo = JtSinonimo.getText();
 
