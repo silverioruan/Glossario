@@ -264,9 +264,11 @@ public class JfDeletarTermo extends javax.swing.JFrame {
             int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar?",".: Deletar :.",JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
         if (resp == 0) {
                 // Construir a consulta SQL para atualizar as colunas
-                String sql = "UPDATE terminologias SET nome  = NULL,  descricao = NULL, sinonimo =NULL" + " where idterminologias = " + id;
+                //String sql = "UPDATE terminologias SET nome  = NULL,  descricao = NULL, sinonimo =NULL" + " where idterminologias = " + id;
+                String sql = "DELETE FROM terminologias WHERE nome = ? ";
                 // Criar a declaração preparada (PreparedStatement)
                 PreparedStatement statement = con.prepareStatement(sql);
+                statement.setString(1, novoNome);
 
                 // Executar a atualização
                 int rowsAffected = statement.executeUpdate();
