@@ -43,12 +43,12 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         novasenha = new javax.swing.JLabel();
         EDITAR = new javax.swing.JButton();
-        jtnovocontato = new javax.swing.JPasswordField();
         JLConfirmaSenha10 = new javax.swing.JLabel();
-        jtnovonome = new javax.swing.JPasswordField();
-        jtnovasenha = new javax.swing.JTextField();
+        jtnovasenha = new javax.swing.JPasswordField();
+        jtnovonome2 = new javax.swing.JTextField();
         novonome = new javax.swing.JLabel();
         senha1 = new javax.swing.JLabel();
+        jtnovocontato = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,10 +109,10 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         JLConfirmaSenha10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         JLConfirmaSenha10.setForeground(new java.awt.Color(51, 255, 51));
 
-        jtnovasenha.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jtnovasenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtnovonome2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jtnovonome2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jtnovasenhaFocusLost(evt);
+                jtnovonome2FocusLost(evt);
             }
         });
 
@@ -162,11 +162,12 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(senha1)
                                 .addGap(30, 30, 30)))
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtnovonome, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                            .addComponent(jtnovasenha)
-                            .addComponent(jtnovocontato)
-                            .addComponent(jtnome))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtnovasenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                .addComponent(jtnome))
+                            .addComponent(jtnovonome2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtnovocontato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -189,16 +190,16 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtnovonome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(novonome))
+                            .addComponent(novonome)
+                            .addComponent(jtnovonome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtnovasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(novasenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                            .addComponent(novasenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtnovasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtnovocontato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(senha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(senha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtnovocontato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(107, 107, 107)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,8 +234,8 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         nome.setText("");
-        jtnovonome.setText("");
         jtnovasenha.setText("");
+        jtnovonome2.setText("");
         jtnovocontato.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton25ActionPerformed
@@ -254,7 +255,7 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
             while (rs.next()) {
                 jtnome.setText(rs.getString("nome"));
-                jtnovasenha.setText(rs.getString("senha"));
+                jtnovonome2.setText(rs.getString("senha"));
                 jtnovocontato.setText(rs.getString("contato"));
             }
 
@@ -269,11 +270,13 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         String nomeColumn = "nome";
         String senhaColumn = "descricao";
         String contatoColumn = "sinonimo";
+          String usuarioColumn = "usuario";
 
         // Novos valores para as colunas
         String novoNome = jtnome.getText();
-        String novaSenha = jtnovasenha.getText();
+        String novaSenha = jtnovonome2.getText();
         String novoContato = jtnovocontato.getText();
+        //String novoUsuario = jtnovousuario.getText();
 
         try {
 
@@ -288,7 +291,7 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                 id = rs.getInt("idusuarios");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "UPDATE INTO usuarios(nome,senha,contato) VALUES (?,?,?)";
+            String sql = "INSERT INTO terminologias(senha,nome,contato) VALUES (?,?,?)";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
@@ -313,9 +316,9 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_EDITARActionPerformed
 
-    private void jtnovasenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnovasenhaFocusLost
+    private void jtnovonome2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnovonome2FocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtnovasenhaFocusLost
+    }//GEN-LAST:event_jtnovonome2FocusLost
 
     /**
      * @param args the command line arguments
@@ -361,9 +364,9 @@ public class JFEditarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JTextField jtnome;
-    private javax.swing.JTextField jtnovasenha;
-    private javax.swing.JPasswordField jtnovocontato;
-    private javax.swing.JPasswordField jtnovonome;
+    private javax.swing.JPasswordField jtnovasenha;
+    private javax.swing.JTextField jtnovocontato;
+    private javax.swing.JTextField jtnovonome2;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel novasenha;
     private javax.swing.JLabel novonome;

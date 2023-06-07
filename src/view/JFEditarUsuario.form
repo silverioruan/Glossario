@@ -65,7 +65,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton25" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
@@ -90,11 +90,13 @@
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jtnovonome" alignment="0" pref="208" max="32767" attributes="0"/>
-                              <Component id="jtnovasenha" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtnovocontato" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jtnome" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jtnovasenha" alignment="0" pref="208" max="32767" attributes="0"/>
+                                  <Component id="jtnome" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jtnovonome2" min="-2" pref="208" max="-2" attributes="0"/>
+                              <Component id="jtnovocontato" alignment="1" min="-2" pref="199" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
@@ -125,18 +127,18 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtnovonome" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="novonome" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtnovonome2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtnovasenha" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="novasenha" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jtnovasenha" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtnovocontato" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="senha1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jtnovocontato" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -259,8 +261,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EDITARActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jtnovocontato">
-        </Component>
         <Component class="javax.swing.JLabel" name="JLConfirmaSenha10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -271,16 +271,16 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jtnovonome">
+        <Component class="javax.swing.JPasswordField" name="jtnovasenha">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtnovasenha">
+        <Component class="javax.swing.JTextField" name="jtnovonome2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Verdana" size="12" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtnovasenhaFocusLost"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtnovonome2FocusLost"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="novonome">
@@ -304,6 +304,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Novo Contato:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtnovocontato">
         </Component>
       </SubComponents>
     </Container>
