@@ -37,22 +37,18 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jButton24 = new javax.swing.JButton();
-        JLLogin10 = new javax.swing.JLabel();
+        nome = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
-        JTLogin10 = new javax.swing.JTextField();
+        jtnome = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        JLSenha10 = new javax.swing.JLabel();
-        Criar12 = new javax.swing.JButton();
-        JPSenha20 = new javax.swing.JPasswordField();
+        novasenha = new javax.swing.JLabel();
+        EDITAR = new javax.swing.JButton();
+        jtnovocontato = new javax.swing.JPasswordField();
         JLConfirmaSenha10 = new javax.swing.JLabel();
-        JPSenha21 = new javax.swing.JPasswordField();
-        JLNome10 = new javax.swing.JLabel();
-        JTNome10 = new javax.swing.JTextField();
-        JLContato10 = new javax.swing.JLabel();
-        JTContato10 = new javax.swing.JTextField();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        JTAResumo10 = new javax.swing.JTextArea();
-        JLResumo10 = new javax.swing.JLabel();
+        jtnovonome = new javax.swing.JPasswordField();
+        jtnovasenha = new javax.swing.JTextField();
+        novonome = new javax.swing.JLabel();
+        senha1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,9 +69,9 @@ public class JFEditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        JLLogin10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLLogin10.setForeground(new java.awt.Color(51, 255, 51));
-        JLLogin10.setText("Login:");
+        nome.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        nome.setForeground(new java.awt.Color(51, 255, 51));
+        nome.setText("Nome:");
 
         jButton25.setBackground(new java.awt.Color(51, 204, 255));
         jButton25.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
@@ -86,115 +82,93 @@ public class JFEditarUsuario extends javax.swing.JFrame {
             }
         });
 
-        JTLogin10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        JTLogin10.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtnome.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jtnome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                JTLogin10FocusLost(evt);
+                jtnomeFocusLost(evt);
             }
         });
 
         jLabel32.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel32.setText("Criar Usuário:");
+        jLabel32.setText("Editar Usuário:");
 
-        JLSenha10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLSenha10.setForeground(new java.awt.Color(51, 255, 51));
-        JLSenha10.setText("Senha:");
+        novasenha.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        novasenha.setForeground(new java.awt.Color(51, 255, 51));
+        novasenha.setText("Nova Senha:");
 
-        Criar12.setBackground(new java.awt.Color(102, 255, 102));
-        Criar12.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        Criar12.setText("CRIAR.exe");
-        Criar12.addActionListener(new java.awt.event.ActionListener() {
+        EDITAR.setBackground(new java.awt.Color(102, 255, 102));
+        EDITAR.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        EDITAR.setText("EDITAR.exe");
+        EDITAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Criar12ActionPerformed(evt);
+                EDITARActionPerformed(evt);
             }
         });
 
         JLConfirmaSenha10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         JLConfirmaSenha10.setForeground(new java.awt.Color(51, 255, 51));
-        JLConfirmaSenha10.setText("Confirme a senha:");
 
-        JLNome10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLNome10.setForeground(new java.awt.Color(51, 255, 51));
-        JLNome10.setText("Nome:");
-
-        JTNome10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        JTNome10.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtnovasenha.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jtnovasenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                JTNome10FocusLost(evt);
+                jtnovasenhaFocusLost(evt);
             }
         });
 
-        JLContato10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLContato10.setForeground(new java.awt.Color(51, 255, 51));
-        JLContato10.setText("Contato:");
+        novonome.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        novonome.setForeground(new java.awt.Color(51, 255, 51));
+        novonome.setText("Novo Nome:");
 
-        JTContato10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        JTContato10.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                JTContato10FocusLost(evt);
-            }
-        });
-
-        JTAResumo10.setColumns(20);
-        JTAResumo10.setRows(5);
-        jScrollPane11.setViewportView(JTAResumo10);
-
-        JLResumo10.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLResumo10.setForeground(new java.awt.Color(51, 255, 51));
-        JLResumo10.setText("Resumo:");
+        senha1.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        senha1.setForeground(new java.awt.Color(51, 255, 51));
+        senha1.setText("Novo Contato:");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel31)
+                .addGap(55, 55, 55))
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(JLConfirmaSenha10)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addComponent(JLSenha10)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(JPSenha20, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(JLNome10)
-                                        .addComponent(JLConfirmaSenha10)
-                                        .addComponent(JLContato10))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(JPSenha21, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(JTNome10, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(JTContato10, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton25))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel32)
-                                    .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addComponent(JLLogin10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(JTLogin10, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton25, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12))))))
+                                    .addComponent(nome))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(Criar12, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(150, 150, 150)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(novonome)
+                                    .addComponent(novasenha))
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(senha1)
+                                .addGap(30, 30, 30)))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtnovonome, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                            .addComponent(jtnovasenha)
+                            .addComponent(jtnovocontato)
+                            .addComponent(jtnome))
+                        .addGap(55, 55, 55)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel31)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(JLResumo10)
-                        .addGap(336, 336, 336))))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,40 +177,36 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel31)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel32)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTLogin10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLLogin10))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JPSenha20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLSenha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JPSenha21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLConfirmaSenha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTNome10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLNome10))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTContato10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLContato10))
-                        .addGap(13, 13, 13)
-                        .addComponent(JLResumo10)
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLConfirmaSenha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nome)
+                                    .addComponent(jtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtnovonome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(novonome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Criar12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtnovasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(novasenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtnovocontato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(107, 107, 107)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(436, 436, 436)
                         .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,12 +233,13 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         nome.setText("");
-        descricao.setText("");
-        JtSinonimo.setText("");
+        jtnovonome.setText("");
+        jtnovasenha.setText("");
+        jtnovocontato.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton25ActionPerformed
 
-    private void JTLogin10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTLogin10FocusLost
+    private void jtnomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnomeFocusLost
         // TODO add your handling code here:
         String novoNome = nome.getText();
 
@@ -283,52 +254,53 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
             while (rs.next()) {
                 jtnome.setText(rs.getString("nome"));
-                JtSinonimo.setText(rs.getString("sinonimo"));
-                descricao.setText(rs.getString("descricao"));
+                jtnovasenha.setText(rs.getString("senha"));
+                jtnovocontato.setText(rs.getString("contato"));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_JTLogin10FocusLost
+    }//GEN-LAST:event_jtnomeFocusLost
 
-    private void Criar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar12ActionPerformed
+    private void EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDITARActionPerformed
         // Informações da tabela e das colunas
         String tableName = "usuarios";
         String nomeColumn = "nome";
-        String descricaoColumn = "descricao";
-        String sinonimoColumn = "sinonimo";
+        String senhaColumn = "descricao";
+        String contatoColumn = "sinonimo";
 
         // Novos valores para as colunas
         String novoNome = jtnome.getText();
-        String novaDescricao = descricao.getText();
-        String novoSinonimo = JtSinonimo.getText();
+        String novaSenha = jtnovasenha.getText();
+        String novoContato = jtnovocontato.getText();
 
         try {
 
             // Conectar ao banco de dados
             Connection con = DatabaseConnection.getConnection();
             int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
+            String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                id = rs.getInt("idterminologias");
+                id = rs.getInt("idusuarios");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO terminologias(nome,descricao,sinonimo, idcategoria) VALUES (?,?,?,1)";
+            String sql = "UPDATE INTO usuarios(nome,senha,contato) VALUES (?,?,?)";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
 
             // Definir os valores para as colunas
             statement.setString(1, novoNome);
-            statement.setString(2, novaDescricao);
-            statement.setString(3, novoSinonimo);
+            statement.setString(2, novaSenha);
+            statement.setString(3, novoContato);
             System.out.println(sql);
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
+            statement.setString(1, novoNome);
 
             // Verificar se a atualização foi bem-sucedida
             if (rowsAffected > 0) {
@@ -339,15 +311,11 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_Criar12ActionPerformed
+    }//GEN-LAST:event_EDITARActionPerformed
 
-    private void JTNome10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTNome10FocusLost
+    private void jtnovasenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnovasenhaFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTNome10FocusLost
-
-    private void JTContato10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTContato10FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTContato10FocusLost
+    }//GEN-LAST:event_jtnovasenhaFocusLost
 
     /**
      * @param args the command line arguments
@@ -385,214 +353,20 @@ public class JFEditarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Criar10;
-    private javax.swing.JButton Criar11;
-    private javax.swing.JButton Criar12;
-    private javax.swing.JButton Criar2;
-    private javax.swing.JButton Criar3;
-    private javax.swing.JButton Criar4;
-    private javax.swing.JButton Criar5;
-    private javax.swing.JButton Criar6;
-    private javax.swing.JButton Criar7;
-    private javax.swing.JButton Criar8;
-    private javax.swing.JButton Criar9;
-    private javax.swing.JLabel JLConfirmaSenha;
-    private javax.swing.JLabel JLConfirmaSenha1;
+    private javax.swing.JButton EDITAR;
     private javax.swing.JLabel JLConfirmaSenha10;
-    private javax.swing.JLabel JLConfirmaSenha2;
-    private javax.swing.JLabel JLConfirmaSenha3;
-    private javax.swing.JLabel JLConfirmaSenha4;
-    private javax.swing.JLabel JLConfirmaSenha5;
-    private javax.swing.JLabel JLConfirmaSenha6;
-    private javax.swing.JLabel JLConfirmaSenha7;
-    private javax.swing.JLabel JLConfirmaSenha8;
-    private javax.swing.JLabel JLConfirmaSenha9;
-    private javax.swing.JLabel JLContato;
-    private javax.swing.JLabel JLContato1;
-    private javax.swing.JLabel JLContato10;
-    private javax.swing.JLabel JLContato2;
-    private javax.swing.JLabel JLContato3;
-    private javax.swing.JLabel JLContato4;
-    private javax.swing.JLabel JLContato5;
-    private javax.swing.JLabel JLContato6;
-    private javax.swing.JLabel JLContato7;
-    private javax.swing.JLabel JLContato8;
-    private javax.swing.JLabel JLContato9;
-    private javax.swing.JLabel JLLogin;
-    private javax.swing.JLabel JLLogin1;
-    private javax.swing.JLabel JLLogin10;
-    private javax.swing.JLabel JLLogin2;
-    private javax.swing.JLabel JLLogin3;
-    private javax.swing.JLabel JLLogin4;
-    private javax.swing.JLabel JLLogin5;
-    private javax.swing.JLabel JLLogin6;
-    private javax.swing.JLabel JLLogin7;
-    private javax.swing.JLabel JLLogin8;
-    private javax.swing.JLabel JLLogin9;
-    private javax.swing.JLabel JLNome;
-    private javax.swing.JLabel JLNome1;
-    private javax.swing.JLabel JLNome10;
-    private javax.swing.JLabel JLNome2;
-    private javax.swing.JLabel JLNome3;
-    private javax.swing.JLabel JLNome4;
-    private javax.swing.JLabel JLNome5;
-    private javax.swing.JLabel JLNome6;
-    private javax.swing.JLabel JLNome7;
-    private javax.swing.JLabel JLNome8;
-    private javax.swing.JLabel JLNome9;
-    private javax.swing.JLabel JLResumo;
-    private javax.swing.JLabel JLResumo1;
-    private javax.swing.JLabel JLResumo10;
-    private javax.swing.JLabel JLResumo2;
-    private javax.swing.JLabel JLResumo3;
-    private javax.swing.JLabel JLResumo4;
-    private javax.swing.JLabel JLResumo5;
-    private javax.swing.JLabel JLResumo6;
-    private javax.swing.JLabel JLResumo7;
-    private javax.swing.JLabel JLResumo8;
-    private javax.swing.JLabel JLResumo9;
-    private javax.swing.JLabel JLSenha;
-    private javax.swing.JLabel JLSenha1;
-    private javax.swing.JLabel JLSenha10;
-    private javax.swing.JLabel JLSenha2;
-    private javax.swing.JLabel JLSenha3;
-    private javax.swing.JLabel JLSenha4;
-    private javax.swing.JLabel JLSenha5;
-    private javax.swing.JLabel JLSenha6;
-    private javax.swing.JLabel JLSenha7;
-    private javax.swing.JLabel JLSenha8;
-    private javax.swing.JLabel JLSenha9;
-    private javax.swing.JPasswordField JPSenha;
-    private javax.swing.JPasswordField JPSenha1;
-    private javax.swing.JPasswordField JPSenha10;
-    private javax.swing.JPasswordField JPSenha11;
-    private javax.swing.JPasswordField JPSenha12;
-    private javax.swing.JPasswordField JPSenha13;
-    private javax.swing.JPasswordField JPSenha14;
-    private javax.swing.JPasswordField JPSenha15;
-    private javax.swing.JPasswordField JPSenha16;
-    private javax.swing.JPasswordField JPSenha17;
-    private javax.swing.JPasswordField JPSenha18;
-    private javax.swing.JPasswordField JPSenha19;
-    private javax.swing.JPasswordField JPSenha2;
-    private javax.swing.JPasswordField JPSenha20;
-    private javax.swing.JPasswordField JPSenha21;
-    private javax.swing.JPasswordField JPSenha3;
-    private javax.swing.JPasswordField JPSenha4;
-    private javax.swing.JPasswordField JPSenha5;
-    private javax.swing.JPasswordField JPSenha6;
-    private javax.swing.JPasswordField JPSenha7;
-    private javax.swing.JPasswordField JPSenha8;
-    private javax.swing.JPasswordField JPSenha9;
-    private javax.swing.JTextArea JTAResumo;
-    private javax.swing.JTextArea JTAResumo1;
-    private javax.swing.JTextArea JTAResumo10;
-    private javax.swing.JTextArea JTAResumo2;
-    private javax.swing.JTextArea JTAResumo3;
-    private javax.swing.JTextArea JTAResumo4;
-    private javax.swing.JTextArea JTAResumo5;
-    private javax.swing.JTextArea JTAResumo6;
-    private javax.swing.JTextArea JTAResumo7;
-    private javax.swing.JTextArea JTAResumo8;
-    private javax.swing.JTextArea JTAResumo9;
-    private javax.swing.JTextField JTContato;
-    private javax.swing.JTextField JTContato1;
-    private javax.swing.JTextField JTContato10;
-    private javax.swing.JTextField JTContato2;
-    private javax.swing.JTextField JTContato3;
-    private javax.swing.JTextField JTContato4;
-    private javax.swing.JTextField JTContato5;
-    private javax.swing.JTextField JTContato6;
-    private javax.swing.JTextField JTContato7;
-    private javax.swing.JTextField JTContato8;
-    private javax.swing.JTextField JTContato9;
-    private javax.swing.JTextField JTLogin;
-    private javax.swing.JTextField JTLogin1;
-    private javax.swing.JTextField JTLogin10;
-    private javax.swing.JTextField JTLogin2;
-    private javax.swing.JTextField JTLogin3;
-    private javax.swing.JTextField JTLogin4;
-    private javax.swing.JTextField JTLogin5;
-    private javax.swing.JTextField JTLogin6;
-    private javax.swing.JTextField JTLogin7;
-    private javax.swing.JTextField JTLogin8;
-    private javax.swing.JTextField JTLogin9;
-    private javax.swing.JTextField JTNome;
-    private javax.swing.JTextField JTNome1;
-    private javax.swing.JTextField JTNome10;
-    private javax.swing.JTextField JTNome2;
-    private javax.swing.JTextField JTNome3;
-    private javax.swing.JTextField JTNome4;
-    private javax.swing.JTextField JTNome5;
-    private javax.swing.JTextField JTNome6;
-    private javax.swing.JTextField JTNome7;
-    private javax.swing.JTextField JTNome8;
-    private javax.swing.JTextField JTNome9;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextField jtnome;
+    private javax.swing.JTextField jtnovasenha;
+    private javax.swing.JPasswordField jtnovocontato;
+    private javax.swing.JPasswordField jtnovonome;
+    private javax.swing.JLabel nome;
+    private javax.swing.JLabel novasenha;
+    private javax.swing.JLabel novonome;
+    private javax.swing.JLabel senha1;
     // End of variables declaration//GEN-END:variables
 }
