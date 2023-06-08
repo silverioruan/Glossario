@@ -6,6 +6,7 @@ package view;
 
 import Conexao.DatabaseConnection;
 import Model.Usuario;
+import Validadores.Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -187,13 +188,16 @@ public class JFadmin extends javax.swing.JFrame {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+        
+        char[] senha = jfsenha.getPassword();
+        String novaSenha = Login.geraSenha(new String(senha));
 
         try {
             connection = DatabaseConnection.getConnection();
             String query = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, jTusuario.getText());
-            statement.setString(2, jfsenha.getText());
+            statement.setString(2, novaSenha);
 
             resultSet = statement.executeQuery();
 
@@ -201,11 +205,10 @@ public class JFadmin extends javax.swing.JFrame {
                 Usuario usuario = new Usuario();
                 usuario.setUsername(resultSet.getString("usuario"));
                 usuario.setPassword(resultSet.getString("senha"));
-                usuario.setNivelAcesso(resultSet.getInt("idPerfisAcesso"));
                 JFadmMenu mp = new JFadmMenu();
                 mp.setVisible(true);
                 this.dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Acesso negado, as credenciais não conferem");
             }
         } catch (SQLException e) {

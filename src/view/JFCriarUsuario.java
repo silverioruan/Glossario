@@ -5,6 +5,14 @@
  */
 package view;
 
+import Conexao.DatabaseConnection;
+import Validadores.Login;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author loren
@@ -41,23 +49,18 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         Criar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        JBVoltar = new javax.swing.JButton();
         JLLogin = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        JTLogin = new javax.swing.JTextField();
+        JBLimpar = new javax.swing.JButton();
+        JTusuario = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         JLSenha = new javax.swing.JLabel();
-        Criar2 = new javax.swing.JButton();
+        JBCriar = new javax.swing.JButton();
         JPSenha = new javax.swing.JPasswordField();
-        JLConfirmaSenha = new javax.swing.JLabel();
-        JPSenha2 = new javax.swing.JPasswordField();
         JLNome = new javax.swing.JLabel();
         JTNome = new javax.swing.JTextField();
         JLContato = new javax.swing.JLabel();
         JTContato = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        JTAResumo = new javax.swing.JTextArea();
-        JLResumo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -202,32 +205,37 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         jLabel11.setText("O Oráculo para Pregiçosos");
         jLabel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton4.setBackground(new java.awt.Color(102, 255, 102));
-        jButton4.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
-        jButton4.setText("Voltar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        JBVoltar.setBackground(new java.awt.Color(102, 255, 102));
+        JBVoltar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        JBVoltar.setText("Voltar");
+        JBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                JBVoltarActionPerformed(evt);
             }
         });
 
         JLLogin.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         JLLogin.setForeground(new java.awt.Color(51, 255, 51));
-        JLLogin.setText("Login:");
+        JLLogin.setText("Usuário:");
 
-        jButton7.setBackground(new java.awt.Color(51, 204, 255));
-        jButton7.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        jButton7.setText("LIMPAR.exe");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        JBLimpar.setBackground(new java.awt.Color(51, 204, 255));
+        JBLimpar.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        JBLimpar.setText("LIMPAR.exe");
+        JBLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                JBLimparActionPerformed(evt);
             }
         });
 
-        JTLogin.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        JTLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+        JTusuario.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        JTusuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                JTLoginFocusLost(evt);
+                JTusuarioFocusLost(evt);
+            }
+        });
+        JTusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTusuarioActionPerformed(evt);
             }
         });
 
@@ -239,18 +247,14 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         JLSenha.setForeground(new java.awt.Color(51, 255, 51));
         JLSenha.setText("Senha:");
 
-        Criar2.setBackground(new java.awt.Color(102, 255, 102));
-        Criar2.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        Criar2.setText("CRIAR.exe");
-        Criar2.addActionListener(new java.awt.event.ActionListener() {
+        JBCriar.setBackground(new java.awt.Color(102, 255, 102));
+        JBCriar.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        JBCriar.setText("CRIAR.exe");
+        JBCriar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Criar2ActionPerformed(evt);
+                JBCriarActionPerformed(evt);
             }
         });
-
-        JLConfirmaSenha.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLConfirmaSenha.setForeground(new java.awt.Color(51, 255, 51));
-        JLConfirmaSenha.setText("Confirme a senha:");
 
         JLNome.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         JLNome.setForeground(new java.awt.Color(51, 255, 51));
@@ -274,65 +278,43 @@ public class JFCriarUsuario extends javax.swing.JFrame {
             }
         });
 
-        JTAResumo.setColumns(20);
-        JTAResumo.setRows(5);
-        jScrollPane1.setViewportView(JTAResumo);
-
-        JLResumo.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        JLResumo.setForeground(new java.awt.Color(51, 255, 51));
-        JLResumo.setText("Resumo:");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JLSenha)
+                        .addGap(18, 18, 18)
+                        .addComponent(JPSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(JLNome)
+                            .addComponent(JLContato))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(JLSenha)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(JPSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(JLNome)
-                                        .addComponent(JLConfirmaSenha)
-                                        .addComponent(JLContato))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(JPSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(JTContato, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(JLLogin)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(JTLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12))))))
+                            .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTContato, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(Criar2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(JLLogin)
+                        .addGap(18, 18, 18)
+                        .addComponent(JTusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(56, 56, 56))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(JBCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBLimpar)))
+                .addContainerGap(243, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(JLResumo)
-                        .addGap(336, 336, 336))))
+                .addComponent(jLabel11)
+                .addGap(55, 55, 55))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,21 +323,17 @@ public class JFCriarUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(60, 60, 60)
                         .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLLogin))
                         .addGap(8, 8, 8)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JPSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JPSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLConfirmaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLNome))
@@ -363,17 +341,14 @@ public class JFCriarUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLContato))
-                        .addGap(13, 13, 13)
-                        .addComponent(JLResumo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(67, 67, 67)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Criar2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JBCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(436, 436, 436)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -394,21 +369,17 @@ public class JFCriarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFadmMenu mp = new JFadmMenu();
-        mp.setVisible(true);
-        this.dispose();      // TODO add your handling code here:
+      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        nome.setText("");
-        descricao.setText("");
-        JtSinonimo.setText("");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void nome1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nome1FocusLost
         // TODO add your handling code here:
-        String novoNome = nome.getText();
+        String novoNome = JTNome.getText();
 
         try {
 
@@ -420,9 +391,9 @@ public class JFCriarUsuario extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                nome.setText(rs.getString("nome"));
-                JtSinonimo.setText(rs.getString("sinonimo"));
-                descricao.setText(rs.getString("descricao"));
+                JTNome.setText(rs.getString("nome"));
+                JPSenha.setText(rs.getString("sinonimo"));
+                JTContato.setText(rs.getString("descricao"));
             }
 
         } catch (SQLException e) {
@@ -431,89 +402,46 @@ public class JFCriarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_nome1FocusLost
 
     private void Criar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar1ActionPerformed
-        // Informações da tabela e das colunas
-        String tableName = "terminologias";
-        String nomeColumn = "nome";
-        String descricaoColumn = "descricao";
-        String sinonimoColumn = "sinonimo";
-
-        // Novos valores para as colunas
-        String novoNome = nome.getText();
-        String novaDescricao = descricao.getText();
-        String novoSinonimo = JtSinonimo.getText();
-
-        try {
-
-            // Conectar ao banco de dados
-            Connection con = DatabaseConnection.getConnection();
-            int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
-            PreparedStatement pst = con.prepareStatement(sql1);
-            pst.setString(1, novoNome);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                id = rs.getInt("idterminologias");
-            }
-            // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO terminologias(nome,descricao,sinonimo, idcategoria) VALUES (?,?,?,1)";
-            //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
-            // Criar a declaração preparada (PreparedStatement)
-            PreparedStatement statement = con.prepareStatement(sql);
-
-            // Definir os valores para as colunas
-            statement.setString(1, novoNome);
-            statement.setString(2, novaDescricao);
-            statement.setString(3, novoSinonimo);
-            System.out.println(sql);
-            // Executar a atualização
-            int rowsAffected = statement.executeUpdate();
-
-            // Verificar se a atualização foi bem-sucedida
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(this, "As colunas foram atualizadas com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Nenhuma linha foi atualizada.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }        // TODO add your handling code here:
+       
     }//GEN-LAST:event_Criar1ActionPerformed
 
-    private void Criar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Criar2ActionPerformed
-        // Informações da tabela e das colunas
-        String tableName = "terminologias";
+    private void JBCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCriarActionPerformed
+ String tableName = "usuarios";
         String nomeColumn = "nome";
-        String descricaoColumn = "descricao";
-        String sinonimoColumn = "sinonimo";
+        String senhaColumn = "descricao";
+        String contatoColumn = "contato";
+        String usuarioColumn = "usuario";
 
         // Novos valores para as colunas
-        String novoNome = nome.getText();
-        String novaDescricao = descricao.getText();
-        String novoSinonimo = JtSinonimo.getText();
+        String novoNome = JTNome.getText();
+        char[] senha = JPSenha.getPassword();
+        String novaSenha = Login.geraSenha(new String(senha));
+        String novoContato = JTContato.getText();
+        //String novoUsuario = jtnovousuario.getText();
 
         try {
 
             // Conectar ao banco de dados
             Connection con = DatabaseConnection.getConnection();
             int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
+            String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                id = rs.getInt("idterminologias");
+                id = rs.getInt("idusuarios");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO terminologias(nome,descricao,sinonimo, idcategoria) VALUES (?,?,?,1)";
+            String sql = "INSERT INTO usuarios set senha = ?, nome = ?, contato = ? where idusuarios = ?";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(2, novoNome);
 
             // Definir os valores para as colunas
-            statement.setString(1, novoNome);
-            statement.setString(2, novaDescricao);
-            statement.setString(3, novoSinonimo);
-            System.out.println(sql);
+            statement.setInt(4, id);
+            statement.setString(1, novaSenha);
+            statement.setString(3, novoContato);
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
 
@@ -526,44 +454,45 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_Criar2ActionPerformed
+    }//GEN-LAST:event_JBCriarActionPerformed
 
-    private void JTLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTLoginFocusLost
+    private void JTusuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTusuarioFocusLost
         // TODO add your handling code here:
-        String novoNome = nome.getText();
+        String novoNome = JTusuario.getText();
 
         try {
 
             Connection con = DatabaseConnection.getConnection();
             int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
+            String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                nome.setText(rs.getString("nome"));
-                JtSinonimo.setText(rs.getString("sinonimo"));
-                descricao.setText(rs.getString("descricao"));
+                JTNome.setText(rs.getString("nome"));
+                JPSenha.setText(rs.getString("sinonimo"));
+                JTContato.setText(rs.getString("descricao"));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_JTLoginFocusLost
+    }//GEN-LAST:event_JTusuarioFocusLost
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        nome.setText("");
-        descricao.setText("");
-        JtSinonimo.setText("");
+    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
+        JTusuario.setText("");
+        JTContato.setText("");
+        JPSenha.setText("");
+        JTNome.setText("");
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_JBLimparActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         JFMenuUsuario mp = new JFMenuUsuario();
         mp.setVisible(true);
         this.dispose();      // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_JBVoltarActionPerformed
 
     private void JTNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTNomeFocusLost
         // TODO add your handling code here:
@@ -572,6 +501,10 @@ public class JFCriarUsuario extends javax.swing.JFrame {
     private void JTContatoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTContatoFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_JTContatoFocusLost
+
+    private void JTusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTusuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -610,25 +543,21 @@ public class JFCriarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Criar1;
-    private javax.swing.JButton Criar2;
-    private javax.swing.JLabel JLConfirmaSenha;
+    private javax.swing.JButton JBCriar;
+    private javax.swing.JButton JBLimpar;
+    private javax.swing.JButton JBVoltar;
     private javax.swing.JLabel JLContato;
     private javax.swing.JLabel JLLogin;
     private javax.swing.JLabel JLNome;
-    private javax.swing.JLabel JLResumo;
     private javax.swing.JLabel JLSenha;
     private javax.swing.JPasswordField JPSenha;
-    private javax.swing.JPasswordField JPSenha2;
-    private javax.swing.JTextArea JTAResumo;
     private javax.swing.JTextField JTContato;
-    private javax.swing.JTextField JTLogin;
     private javax.swing.JTextField JTNome;
+    private javax.swing.JTextField JTusuario;
     private javax.swing.JTextField JtSinonimo1;
     private javax.swing.JTextField descricao1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -638,7 +567,6 @@ public class JFCriarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nome1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,10 +6,13 @@
 package view;
 
 import Conexao.DatabaseConnection;
+import Validadores.Login;
+import glossarioDAO.DatabaseSearch;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,6 +78,7 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
         jButton25.setBackground(new java.awt.Color(51, 204, 255));
         jButton25.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(0, 0, 0));
         jButton25.setText("LIMPAR.exe");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +92,11 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                 jtnomeFocusLost(evt);
             }
         });
+        jtnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtnomeActionPerformed(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(51, 255, 51));
@@ -97,8 +106,9 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         novasenha.setForeground(new java.awt.Color(51, 255, 51));
         novasenha.setText("Nova Senha:");
 
-        EDITAR.setBackground(new java.awt.Color(102, 255, 102));
+        EDITAR.setBackground(new java.awt.Color(255, 51, 51));
         EDITAR.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        EDITAR.setForeground(new java.awt.Color(0, 0, 0));
         EDITAR.setText("EDITAR.exe");
         EDITAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,18 +149,10 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                         .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(JLConfirmaSenha10)
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton25))
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32)
-                                    .addComponent(nome))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel32)
+                            .addComponent(nome)))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -160,15 +162,17 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                                     .addComponent(novasenha))
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addComponent(senha1)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(senha1))
                                 .addGap(30, 30, 30)))
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jtnovasenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                                 .addComponent(jtnome))
                             .addComponent(jtnovonome2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtnovocontato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)))
+                            .addComponent(jtnovocontato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton25, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
@@ -200,10 +204,11 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(senha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jtnovocontato, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(107, 107, 107)
+                        .addGap(44, 44, 44)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(EDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(436, 436, 436)
                         .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -242,25 +247,17 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
     private void jtnomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnomeFocusLost
         // TODO add your handling code here:
-        String novoNome = nome.getText();
+        String keyword = jtnome.getText();
 
-        try {
+        DatabaseSearch databaseSearch = new DatabaseSearch();
+        List<String> results = databaseSearch.searchByKeyword2(keyword);
 
-            Connection con = DatabaseConnection.getConnection();
-            int id = 0;
-            String sql1 = "SELECT * from usuarios where nome like ?";
-            PreparedStatement pst = con.prepareStatement(sql1);
-            pst.setString(1, novoNome);
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()) {
-                jtnome.setText(rs.getString("nome"));
-                jtnovonome2.setText(rs.getString("senha"));
-                jtnovocontato.setText(rs.getString("contato"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhum resultado encontrado.");
+        } else {
+            JOptionPane.showMessageDialog(this,"Resultados encontrados:");
+            
+            
         }
     }//GEN-LAST:event_jtnomeFocusLost
 
@@ -269,12 +266,13 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         String tableName = "usuarios";
         String nomeColumn = "nome";
         String senhaColumn = "descricao";
-        String contatoColumn = "sinonimo";
-          String usuarioColumn = "usuario";
+        String contatoColumn = "contato";
+        String usuarioColumn = "usuario";
 
         // Novos valores para as colunas
         String novoNome = jtnome.getText();
-        String novaSenha = jtnovonome2.getText();
+        char[] senha = jtnovasenha.getPassword();
+        String novaSenha = Login.geraSenha(new String(senha));
         String novoContato = jtnovocontato.getText();
         //String novoUsuario = jtnovousuario.getText();
 
@@ -291,19 +289,18 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                 id = rs.getInt("idusuarios");
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO terminologias(senha,nome,contato) VALUES (?,?,?)";
+            String sql = "UPDATE usuarios set senha = ?, nome = ?, contato = ? where idusuarios = ?";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(2, novoNome);
 
             // Definir os valores para as colunas
-            statement.setString(1, novoNome);
-            statement.setString(2, novaSenha);
+            statement.setInt(4, id);
+            statement.setString(1, novaSenha);
             statement.setString(3, novoContato);
-            System.out.println(sql);
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
-            statement.setString(1, novoNome);
 
             // Verificar se a atualização foi bem-sucedida
             if (rowsAffected > 0) {
@@ -319,6 +316,10 @@ public class JFEditarUsuario extends javax.swing.JFrame {
     private void jtnovonome2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtnovonome2FocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jtnovonome2FocusLost
+
+    private void jtnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtnomeActionPerformed
 
     /**
      * @param args the command line arguments

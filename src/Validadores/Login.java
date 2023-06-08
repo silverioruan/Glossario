@@ -6,11 +6,16 @@ package Validadores;
 
 import Conexao.DatabaseConnection;
 import Model.Usuario;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -37,7 +42,6 @@ public class Login {
                 Usuario usuario = new Usuario();
                 usuario.setUsername(resultSet.getString("nome"));
                 usuario.setPassword(resultSet.getString("senha"));
-                usuario.setNivelAcesso(resultSet.getInt("idPerfisAcesso"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -58,6 +62,24 @@ public class Login {
             }
         }
 
+        return null;
+    }
+
+    public static String geraSenha(String senha) {
+        try {
+            MessageDigest mdMD5 = MessageDigest.getInstance("MD5");
+            byte mdByteMD5[] = mdMD5.digest(senha.getBytes("UTF-8"));
+            StringBuilder hexMDMD5 = new StringBuilder();
+            for (byte b : mdByteMD5) {
+                hexMDMD5.append(String.format("%02X", 0xFF & b));
+            }
+            String senhaMD5HashHex = hexMDMD5.toString();
+            return senhaMD5HashHex;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
 }
