@@ -385,15 +385,17 @@ public class JFCriarUsuario extends javax.swing.JFrame {
 
             Connection con = DatabaseConnection.getConnection();
             int id = 0;
-            String sql1 = "SELECT * from terminologias where nome like ?";
+            String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 JTNome.setText(rs.getString("nome"));
-                JPSenha.setText(rs.getString("sinonimo"));
-                JTContato.setText(rs.getString("descricao"));
+                JPSenha.setText(rs.getString("senha"));
+                JTContato.setText(rs.getString("contato"));
+                JTusuario.setText(rs.getString("usuario"));
+                
             }
 
         } catch (SQLException e) {
@@ -408,7 +410,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
     private void JBCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCriarActionPerformed
  String tableName = "usuarios";
         String nomeColumn = "nome";
-        String senhaColumn = "descricao";
+        String senhaColumn = "senha";
         String contatoColumn = "contato";
         String usuarioColumn = "usuario";
 
@@ -417,31 +419,36 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         char[] senha = JPSenha.getPassword();
         String novaSenha = Login.geraSenha(new String(senha));
         String novoContato = JTContato.getText();
-        //String novoUsuario = jtnovousuario.getText();
+        String novoUsuario = JTusuario.getText();
+        int novoPerfisAcesso = 1;
+        
 
         try {
 
             // Conectar ao banco de dados
             Connection con = DatabaseConnection.getConnection();
-            int id = 0;
+            int id = 0; 
             String sql1 = "SELECT * from usuarios where nome like ?";
             PreparedStatement pst = con.prepareStatement(sql1);
             pst.setString(1, novoNome);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 id = rs.getInt("idusuarios");
+                
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO usuarios set senha = ?, nome = ?, contato = ? where idusuarios = ?";
+            String sql = "INSERT INTO usuarios(senha,nome,contato,usuario,idPerfisAcesso) VALUES (?,?,?,?,?)";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(2, novoNome);
 
             // Definir os valores para as colunas
-            statement.setInt(4, id);
+            //statement.setInt(4, id);
             statement.setString(1, novaSenha);
             statement.setString(3, novoContato);
+            statement.setString(4, novoUsuario);
+            statement.setInt(5, novoPerfisAcesso);
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
 
@@ -471,8 +478,8 @@ public class JFCriarUsuario extends javax.swing.JFrame {
 
             while (rs.next()) {
                 JTNome.setText(rs.getString("nome"));
-                JPSenha.setText(rs.getString("sinonimo"));
-                JTContato.setText(rs.getString("descricao"));
+                JPSenha.setText(rs.getString("senha"));
+                JTContato.setText(rs.getString("contato"));
             }
 
         } catch (SQLException e) {
