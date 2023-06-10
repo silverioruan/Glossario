@@ -85,8 +85,8 @@ public class JFadmin extends javax.swing.JFrame {
         jLabel4.setText("SENHA");
 
         jblogin.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
-        jblogin.setForeground(new java.awt.Color(255, 0, 0));
-        jblogin.setText("Shazão!");
+        jblogin.setForeground(new java.awt.Color(0, 153, 255));
+        jblogin.setText("LOGIN.exe");
         jblogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
         jblogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +94,7 @@ public class JFadmin extends javax.swing.JFrame {
             }
         });
 
-        jbvoltar.setBackground(new java.awt.Color(102, 255, 102));
+        jbvoltar.setBackground(new java.awt.Color(255, 255, 255));
         jbvoltar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jbvoltar.setText("Voltar");
         jbvoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class JFadmin extends javax.swing.JFrame {
 
         try {
             connection = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
+            String query = "SELECT * FROM usuarios WHERE usuário = ? AND senha = ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, jTusuario.getText());
             statement.setString(2, novaSenha);
@@ -203,7 +203,7 @@ public class JFadmin extends javax.swing.JFrame {
 
             if (resultSet.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setUsername(resultSet.getString("usuario"));
+                usuario.setUsername(resultSet.getString("usuário"));
                 usuario.setPassword(resultSet.getString("senha"));
                 JFadmMenu mp = new JFadmMenu();
                 mp.setVisible(true);

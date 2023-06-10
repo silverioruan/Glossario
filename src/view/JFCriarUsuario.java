@@ -205,7 +205,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         jLabel11.setText("O Oráculo para Pregiçosos");
         jLabel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        JBVoltar.setBackground(new java.awt.Color(102, 255, 102));
+        JBVoltar.setBackground(new java.awt.Color(255, 255, 255));
         JBVoltar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         JBVoltar.setText("Voltar");
         JBVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -420,7 +420,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
         String novaSenha = Login.geraSenha(new String(senha));
         String novoContato = JTContato.getText();
         String novoUsuario = JTusuario.getText();
-        int novoPerfisAcesso = 1;
+        //int novoPerfisAcesso = 1;
         
 
         try {
@@ -437,7 +437,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
                 
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO usuarios(senha,nome,contato,usuario,idPerfisAcesso) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO usuarios(senha,nome,contato,usuário) VALUES (?,?,?,?)";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
@@ -448,7 +448,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
             statement.setString(1, novaSenha);
             statement.setString(3, novoContato);
             statement.setString(4, novoUsuario);
-            statement.setInt(5, novoPerfisAcesso);
+            //statement.setInt(5, novoPerfisAcesso);
             // Executar a atualização
             int rowsAffected = statement.executeUpdate();
 

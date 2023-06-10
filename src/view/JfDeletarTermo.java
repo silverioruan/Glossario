@@ -57,7 +57,7 @@ public class JfDeletarTermo extends javax.swing.JFrame {
         jLabel1.setText("O Oráculo para Pregiçosos");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton3.setBackground(new java.awt.Color(102, 255, 102));
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -342,9 +342,7 @@ public class JfDeletarTermo extends javax.swing.JFrame {
     private javax.swing.JTextField JtSinonimo;
     private javax.swing.JTextField descricao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

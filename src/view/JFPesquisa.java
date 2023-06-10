@@ -63,7 +63,7 @@ public class JFPesquisa extends javax.swing.JFrame {
             }
         });
 
-        jbvoltar.setBackground(new java.awt.Color(102, 255, 102));
+        jbvoltar.setBackground(new java.awt.Color(255, 255, 255));
         jbvoltar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jbvoltar.setText("Voltar");
         jbvoltar.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -44,7 +44,7 @@ public class JFadmMenu extends javax.swing.JFrame {
         jLabel1.setText("O Oráculo para Pregiçosos");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton3.setBackground(new java.awt.Color(102, 255, 102));
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +62,7 @@ public class JFadmMenu extends javax.swing.JFrame {
             }
         });
 
-        EditarTermo.setBackground(new java.awt.Color(102, 255, 102));
+        EditarTermo.setBackground(new java.awt.Color(0, 153, 255));
         EditarTermo.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         EditarTermo.setText("Editar Termo");
         EditarTermo.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class JFadmMenu extends javax.swing.JFrame {
             }
         });
 
-        DeletarTermo.setBackground(new java.awt.Color(102, 255, 102));
+        DeletarTermo.setBackground(new java.awt.Color(255, 51, 51));
         DeletarTermo.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         DeletarTermo.setText("Deletar Termo");
         DeletarTermo.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,7 @@ JfDeletarTermo mp = new JfDeletarTermo();
     }//GEN-LAST:event_DeletarTermoActionPerformed
 
     private void ADMUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADMUsuarioActionPerformed
-JFCriarUsuario mp = new JFCriarUsuario();
+JFMenuUsuario mp = new JFMenuUsuario();
         mp.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_ADMUsuarioActionPerformed

@@ -69,7 +69,7 @@ public class JFDeletarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jbvoltar.setBackground(new java.awt.Color(102, 255, 102));
+        jbvoltar.setBackground(new java.awt.Color(255, 255, 255));
         jbvoltar.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jbvoltar.setText("Voltar");
         jbvoltar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,7 +203,7 @@ public class JFDeletarUsuario extends javax.swing.JFrame {
 
     private void jbvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvoltarActionPerformed
         // TODO add your handling code here:
-        JFmenuPrincipal mp = new JFmenuPrincipal();
+        JFMenuUsuario mp = new JFMenuUsuario();
         mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbvoltarActionPerformed

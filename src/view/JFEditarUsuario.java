@@ -63,7 +63,7 @@ public class JFEditarUsuario extends javax.swing.JFrame {
         jLabel31.setText("O Oráculo para Pregiçosos");
         jLabel31.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton24.setBackground(new java.awt.Color(102, 255, 102));
+        jButton24.setBackground(new java.awt.Color(255, 255, 255));
         jButton24.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jButton24.setText("Voltar");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +78,6 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
         jButton25.setBackground(new java.awt.Color(51, 204, 255));
         jButton25.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        jButton25.setForeground(new java.awt.Color(0, 0, 0));
         jButton25.setText("LIMPAR.exe");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +107,6 @@ public class JFEditarUsuario extends javax.swing.JFrame {
 
         EDITAR.setBackground(new java.awt.Color(255, 51, 51));
         EDITAR.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        EDITAR.setForeground(new java.awt.Color(0, 0, 0));
         EDITAR.setText("EDITAR.exe");
         EDITAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +210,7 @@ public class JFEditarUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(436, 436, 436)
                         .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
