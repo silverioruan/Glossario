@@ -437,7 +437,7 @@ public class JFCriarUsuario extends javax.swing.JFrame {
                 
             }
             // Construir a consulta SQL para atualizar as colunas
-            String sql = "INSERT INTO usuarios(senha,nome,contato,usuário) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO usuarios(senha,nome,contato,usuarios) VALUES (?,?,?,?)";
             //String sql = "SELECT nome, descricao, sinonimo FROM terminologias WHERE id = ?";
             // Criar a declaração preparada (PreparedStatement)
             PreparedStatement statement = con.prepareStatement(sql);
