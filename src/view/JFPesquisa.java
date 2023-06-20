@@ -187,7 +187,7 @@ public class JFPesquisa extends javax.swing.JFrame {
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         // TODO add your handling code here:
-        String keyword = jtnome.getText();
+        String keyword = jtnome.getText().toLowerCase();
 
         DatabaseSearch databaseSearch = new DatabaseSearch();
         List<String> results = databaseSearch.searchByKeyword(keyword);
